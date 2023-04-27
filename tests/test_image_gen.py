@@ -15,9 +15,6 @@ def image_size(request):
     return request.param
 
 
-@pytest.mark.xfail(
-    reason="The image is too big to be put in a cassette for a CI pipeline. We're looking into a solution."
-)
 @requires_api_key("OPENAI_API_KEY")
 def test_dalle(config, workspace, image_size):
     """Test DALL-E image generation."""
@@ -29,9 +26,6 @@ def test_dalle(config, workspace, image_size):
     )
 
 
-@pytest.mark.xfail(
-    reason="The image is too big to be put in a cassette for a CI pipeline. We're looking into a solution."
-)
 @requires_api_key("HUGGINGFACE_API_TOKEN")
 @pytest.mark.parametrize(
     "image_model",
